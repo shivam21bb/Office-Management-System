@@ -1,0 +1,45 @@
+{% extends 'blogapp/base.html' %}
+{% load static %}
+{% block content %}
+   <div class="col-sm-10">
+   <h3 class="text-white my-5">Dashboard</h3>
+   <a href="{% url 'add' %}" class="btn btn-success">Add Post</a>
+   <div class="text-center alert alert-info mt-3"><h4>Show Post Information</h4>
+
+   </div>
+   {% if post %}
+    <table class="table table-hiver bg-white">
+      <thead>
+         <tr class="text-center">
+            <th scope="col" style="width:8">Id</th>
+            <th scope="col" style="width:28">Title</th>
+            <th scope="col" style="width:55">Description </th>
+            <th scope="col" style="width:5">Id</th>
+         </tr>
+      </thead>
+      <tbody>
+         {% for post in post %}
+    <tr>
+        <th scope="row">{{ post.id }}</th>
+        <td>{{ post.title }}</td>
+        <td>{{ post.desc }}</td>
+        <td class="text-center">
+            <a href="{% url 'update' post.id %}" class="btn btn-warning btn-sm">Edit</a>
+            <form action="{% url 'delete' post.id %}" method="POST" class="d-inline">
+                {% csrf_token %}
+                <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+            </form>
+        </td>
+    </tr>
+{% endfor %}
+
+      </tbody>
+    </table>
+    {% else %}
+    No Records
+    </div>
+   </div>
+   {% endif %}
+
+{% endblock content %}
+  

@@ -1,0 +1,21 @@
+{% extends 'blogapp/base.html' %}
+{% load static %}
+{% block content %}
+   <div class="col-sm-10">
+   <h3 class="text-white my-5">Homr page</h3>
+   {% for post in post %}
+   <div class="jumbotron jumbotron-fluid jumbo-color">
+      <div class="container">
+        <h1 class="display-4 font-weight-bold">{{post.title}}</h1>
+        <p class="lead">{{post.desc}}</p>
+        <form action="{% url 'like_post' post.pk %}" method="POST">
+          {% csrf_token %}
+          <button type="submit" name="post_id" value="{{post.id}}" class="btn btn-primary btn-sm">Like</button>
+        </form>
+      </div>
+    </div>
+    {% endfor %}
+   </div>
+
+{% endblock content %}
+  
