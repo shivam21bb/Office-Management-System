@@ -1,0 +1,13 @@
+{% extends 'appoffice/index.html'%}
+{% block element %}
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Choose Employee to be removed
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        {% for emp in emp %}
+      <a class="dropdown-item" href="/delete_employee/{{emp.id}}">{{emp.first_name}}</a>
+       {% endfor %}
+    </div>
+  </div>
+{% endblock element %}

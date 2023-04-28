@@ -1,0 +1,33 @@
+{% extends 'appoffice/index.html'%}
+{% block element %}
+
+<div class="d-flex justify-content-center ">
+    <div class="align-self-center ml-3">
+
+<form action="/add_employee" method="POST">
+    {% csrf_token %}
+    
+    <div class="form-control form-control-lg">
+    <label for="first_name">First Name</label><br>
+    <input type="text"  id="first_name" name="first_name"value="{{first_name}}"><br>
+    <label for="last_name">Last Name</label><br>
+    <input type="text"  id="last_name" name="last_name"value="{{last_name}}"><br>
+    <label for="salarly">Salarly</label><br>
+    <input type="text"  id="salarly" name="salarly" value="{{salarly}}"><br>
+    <label for="dept">Department</label><br>
+    <input type="number"  id="dept" name="dept" value="{{dept}}"><br>
+    <label for="role">Role</label><br>
+    <input type="number"  id="role" name="role" value="{{role}}"><br>
+    <label for="bonus">Bonus</label><br>
+    <input type="number"  id="bonus" name="bonus" value="{{bonus}}"><br>
+    <label for="phone">Phone</label><br>
+    <input type="number"  id="phone" name="phone" value="{{phone}}"><br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+    </form>
+    </div></div>
+</div>
+
+    
+  
+{% endblock element %}
